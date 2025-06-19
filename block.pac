@@ -43,5 +43,27 @@ function FindProxyForURL(url, host) {
     return "PROXY 127.0.0.1:0";
   }
 
+  // 無料マンガサイト（合法・違法問わずブロック）
+  if (
+    dnsDomainIs(host, "piccoma.com") ||
+    shExpMatch(host, "*.piccoma.com") ||
+    dnsDomainIs(host, "manga.line.me") ||
+    dnsDomainIs(host, "line.me") ||
+    dnsDomainIs(host, "cmoa.jp") ||
+    shExpMatch(host, "*.cmoa.jp") ||
+    dnsDomainIs(host, "mechacomic.jp") ||
+    shExpMatch(host, "*.mechacomic.jp") ||
+    dnsDomainIs(host, "mangaraw.to") ||
+    dnsDomainIs(host, "mangaraw.org") ||
+    dnsDomainIs(host, "mangaraw.site") ||
+    dnsDomainIs(host, "manga1001.com") ||
+    dnsDomainIs(host, "manga13.com") ||
+    dnsDomainIs(host, "manga11.com") ||
+    dnsDomainIs(host, "rawdevart.com") ||
+    dnsDomainIs(host, "mangadex.org")
+  ) {
+    return "PROXY 127.0.0.1:0";
+  }
+
   return "DIRECT";
 }
