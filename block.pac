@@ -97,5 +97,45 @@ function FindProxyForURL(url, host) {
     return "PROXY 127.0.0.1:0";
   }
 
+  // 危険系：アダルト
+  if (
+    dnsDomainIs(host, "pornhub.com") ||
+    shExpMatch(host, "*.xvideos.com") ||
+    dnsDomainIs(host, "youporn.com") ||
+    shExpMatch(host, "*.redtube.com") ||
+    dnsDomainIs(host, "8tube.xxx")
+  ) {
+    return "PROXY 127.0.0.1:0";
+  }
+
+  // 匿名チャット・出会い系
+  if (
+    dnsDomainIs(host, "omegle.com") ||
+    dnsDomainIs(host, "chatroulette.com") ||
+    dnsDomainIs(host, "tinder.com")
+  ) {
+    return "PROXY 127.0.0.1:0";
+  }
+
+  // リスクのあるコミュニティ投稿サイト
+  if (
+    dnsDomainIs(host, "tumblr.com") ||
+    dnsDomainIs(host, "reddit.com") ||
+    dnsDomainIs(host, "ask.fm") ||
+    dnsDomainIs(host, "4chan.com")
+  ) {
+    return "PROXY 127.0.0.1:0";
+  }
+
+  // 2ちゃんねる・5ちゃんねる系
+  if (
+    dnsDomainIs(host, "5ch.net") || shExpMatch(host, "*.5ch.net") ||
+    dnsDomainIs(host, "2ch.sc") || shExpMatch(host, "*.2ch.sc") ||
+    dnsDomainIs(host, "open2ch.net") || shExpMatch(host, "*.open2ch.net") ||
+    dnsDomainIs(host, "2chblog.jp") || dnsDomainIs(host, "2chmatome.com")
+  ) {
+    return "PROXY 127.0.0.1:0";
+  }
+
   return "DIRECT";
 }
