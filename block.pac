@@ -97,22 +97,43 @@ function FindProxyForURL(url, host) {
     return "PROXY 127.0.0.1:0";
   }
 
-  // 危険系：アダルト
+  // アダルト系
   if (
     dnsDomainIs(host, "pornhub.com") ||
-    shExpMatch(host, "*.xvideos.com") ||
+    dnsDomainIs(host, "xvideos.com") ||
     dnsDomainIs(host, "youporn.com") ||
-    shExpMatch(host, "*.redtube.com") ||
-    dnsDomainIs(host, "8tube.xxx")
+    dnsDomainIs(host, "fc2.com") ||
+    shExpMatch(host, "*.fc2.com") ||
+    dnsDomainIs(host, "erocool.net") ||
+    dnsDomainIs(host, "ero-video.net") ||
+    dnsDomainIs(host, "adult.contents.fc2.com")
   ) {
     return "PROXY 127.0.0.1:0";
   }
 
-  // 匿名チャット・出会い系
+  // 出会い系・チャット系
   if (
+    dnsDomainIs(host, "tinder.com") ||
+    dnsDomainIs(host, "pairs.lv") ||
+    dnsDomainIs(host, "with.is") ||
+    dnsDomainIs(host, "pcmax.jp") ||
+    dnsDomainIs(host, "waku2.com") ||
+    dnsDomainIs(host, "chatpad.jp") ||
     dnsDomainIs(host, "omegle.com") ||
-    dnsDomainIs(host, "chatroulette.com") ||
-    dnsDomainIs(host, "tinder.com")
+    dnsDomainIs(host, "chatroulette.com")
+  ) {
+    return "PROXY 127.0.0.1:0";
+  }
+
+  // ギャンブル・オンラインカジノ
+  if (
+    dnsDomainIs(host, "pinnacle.com") ||
+    dnsDomainIs(host, "stake.com") ||
+    dnsDomainIs(host, "1xbet.com") ||
+    dnsDomainIs(host, "22bet.com") ||
+    dnsDomainIs(host, "joycasino.com") ||
+    dnsDomainIs(host, "bitcasino.io") ||
+    dnsDomainIs(host, "casumo.com")
   ) {
     return "PROXY 127.0.0.1:0";
   }
