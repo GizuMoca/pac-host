@@ -21,6 +21,38 @@ function FindProxyForURL(url, host) {
     return "PROXY 127.0.0.1:0";
   }
 
+  // Instagram
+  if (
+    dnsDomainIs(host, "instagram.com") ||
+    shExpMatch(host, "*.instagram.com") ||
+    dnsDomainIs(host, "cdninstagram.com") ||
+    shExpMatch(host, "*.cdninstagram.com")
+  ) {
+    return "PROXY 127.0.0.1:0";
+  }
+
+  // Facebook
+  if (
+    dnsDomainIs(host, "facebook.com") ||
+    shExpMatch(host, "*.facebook.com") ||
+    dnsDomainIs(host, "fbcdn.net") ||
+    shExpMatch(host, "*.fbcdn.net")
+  ) {
+    return "PROXY 127.0.0.1:0";
+  }
+
+  // Twitter / X
+  if (
+    dnsDomainIs(host, "twitter.com") ||
+    shExpMatch(host, "*.twitter.com") ||
+    dnsDomainIs(host, "x.com") ||
+    shExpMatch(host, "*.x.com") ||
+    dnsDomainIs(host, "twimg.com") ||
+    shExpMatch(host, "*.twimg.com")
+  ) {
+    return "PROXY 127.0.0.1:0";
+  }
+
   // ブラウザゲームサイト
   if (
     dnsDomainIs(host, "poki.com") ||
