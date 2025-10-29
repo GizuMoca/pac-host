@@ -169,5 +169,15 @@ function FindProxyForURL(url, host) {
     return "PROXY 127.0.0.1:0";
   }
 
+  // 悪意ある／フィッシング・マルウェア配布ドメイン（抜粋）
+  if (
+    dnsDomainIs(host, "malicious‑example1.com") ||
+    dnsDomainIs(host, "malicious‑example2.net") ||
+    shExpMatch(host, "*.badsitexyz.org") ||
+    dnsDomainIs(host, "phishingsite123.xyz")
+  ) {
+    return "PROXY 127.0.0.1:0";
+  }
+
   return "DIRECT";
 }
