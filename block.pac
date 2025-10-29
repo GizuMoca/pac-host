@@ -158,5 +158,16 @@ function FindProxyForURL(url, host) {
     return "PROXY 127.0.0.1:0";
   }
 
+  // 日本語のゲーム攻略サイト（代表例）
+  if (
+    dnsDomainIs(host, "gamewith.jp") || shExpMatch(host, "*.gamewith.jp") ||
+    dnsDomainIs(host, "appmedia.jp") || shExpMatch(host, "*.appmedia.jp") ||
+    dnsDomainIs(host, "altema.jp") || shExpMatch(host, "*.altema.jp") ||
+    dnsDomainIs(host, "game8.jp") || shExpMatch(host, "*.game8.jp") ||
+    dnsDomainIs(host, "kamigame.jp") || shExpMatch(host, "*.kamigame.jp")
+  ) {
+    return "PROXY 127.0.0.1:0";
+  }
+
   return "DIRECT";
 }
