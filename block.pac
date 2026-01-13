@@ -179,5 +179,28 @@ function FindProxyForURL(url, host) {
     return "PROXY 127.0.0.1:0";
   }
 
+  // 少年ジャンプ試し読みなど公式含む無料マンガ（追加分）
+  if (
+    dnsDomainIs(host, "shonenjump.com") || shExpMatch(host, "*.shonenjump.com") ||
+    dnsDomainIs(host, "jumpplus.jp") || shExpMatch(host, "*.jumpplus.jp") ||
+    dnsDomainIs(host, "mangaplus.shueisha.co.jp") || shExpMatch(host, "*.mangaplus.shueisha.co.jp")
+  ) {
+    return "PROXY 127.0.0.1:0";
+  }
+
+  // 太鼓の達人系や違法ゲームサイト（追加分）
+  if (
+    dnsDomainIs(host, "taikoapp.uk") || shExpMatch(host, "*.taikoapp.uk") ||
+    dnsDomainIs(host, "cjdgrevival.com") || shExpMatch(host, "*.cjdgrevival.com") ||
+    dnsDomainIs(host, "taiko-ch.net") || shExpMatch(host, "*.taiko-ch.net") ||
+    dnsDomainIs(host, "taikotatsujin.net") || shExpMatch(host, "*.taikotatsujin.net") ||
+    dnsDomainIs(host, "taikotachi.gamerch.com") || shExpMatch(host, "*.taikotachi.gamerch.com") ||
+    dnsDomainIs(host, "yiv.com") || shExpMatch(host, "*.yiv.com") ||
+    dnsDomainIs(host, "flashgames247.com") || shExpMatch(host, "*.flashgames247.com") ||
+    dnsDomainIs(host, "playretrogames.com") || shExpMatch(host, "*.playretrogames.com")
+  ) {
+    return "PROXY 127.0.0.1:0";
+  }
+
   return "DIRECT";
 }
