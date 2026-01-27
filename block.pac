@@ -202,5 +202,21 @@ function FindProxyForURL(url, host) {
     return "PROXY 127.0.0.1:0";
   }
 
+  // 合法漫画サイト（試し読みも含めてブロック）
+  if (
+    dnsDomainIs(host, "cmoa.jp") || shExpMatch(host, "*.cmoa.jp") ||
+    dnsDomainIs(host, "mechacomic.jp") || shExpMatch(host, "*.mechacomic.jp") ||
+    dnsDomainIs(host, "piccoma.com") || shExpMatch(host, "*.piccoma.com") ||
+    dnsDomainIs(host, "manga.line.me") || dnsDomainIs(host, "line.me") ||
+    dnsDomainIs(host, "manga-bang.com") || shExpMatch(host, "*.manga-bang.com") ||
+    dnsDomainIs(host, "manga-one.com") || shExpMatch(host, "*.manga-one.com") ||
+    dnsDomainIs(host, "comic.k-manga.jp") || shExpMatch(host, "*.k-manga.jp") ||
+    dnsDomainIs(host, "shonenjump.com") || shExpMatch(host, "*.shonenjump.com") ||
+    dnsDomainIs(host, "sunday-webry.com") ||
+    dnsDomainIs(host, "magapoke.com")
+  ) {
+    return "PROXY 127.0.0.1:0";
+  }
+
   return "DIRECT";
 }
