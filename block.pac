@@ -231,5 +231,44 @@ function FindProxyForURL(url, host) {
     return "PROXY 127.0.0.1:0";
   }
 
+  // 海外製ブラウザゲーム（例: 6699.jp など）のブロック
+  if (
+    dnsDomainIs(host, "6699.jp") ||
+    shExpMatch(host, "*.6699.jp") ||
+    dnsDomainIs(host, "66ez.com") ||
+    dnsDomainIs(host, "66games.io") ||
+    dnsDomainIs(host, "yandexgames.com") ||
+    shExpMatch(host, "*.yandexgames.com")
+  ) {
+    return "PROXY 127.0.0.1:0";
+  }
+
+  // 合法だが子ども向けに制限したい「無料ゲーム」サイト
+  if (
+    dnsDomainIs(host, "gamedesign.jp") ||
+    dnsDomainIs(host, "sdin.jp") ||
+    dnsDomainIs(host, "gamepark.org") ||
+    dnsDomainIs(host, "gameplaza.net") ||
+    dnsDomainIs(host, "htmlgames.com") ||
+    dnsDomainIs(host, "armor-games.com") ||
+    dnsDomainIs(host, "addictinggames.com")
+  ) {
+    return "PROXY 127.0.0.1:0";
+  }
+
+  // 無料漫画サイト（試し読み含む）
+  if (
+    dnsDomainIs(host, "shonenjump.com") ||
+    shExpMatch(host, "*.shonenjump.com") ||
+    dnsDomainIs(host, "comic.pixiv.net") ||
+    dnsDomainIs(host, "ganma.jp") ||
+    shExpMatch(host, "*.ganma.jp") ||
+    dnsDomainIs(host, "webaction.jp") ||
+    dnsDomainIs(host, "magcomi.com") ||
+    dnsDomainIs(host, "mangacross.jp")
+  ) {
+    return "PROXY 127.0.0.1:0";
+  }
+
   return "DIRECT";
 }
