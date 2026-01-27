@@ -218,5 +218,18 @@ function FindProxyForURL(url, host) {
     return "PROXY 127.0.0.1:0";
   }
 
+  // 合法な無料ゲームサイト（必要であればブロック）
+  if (
+    dnsDomainIs(host, "gamedesign.jp") ||
+    dnsDomainIs(host, "splax.net") ||
+    dnsDomainIs(host, "sugorokuya.jp") ||
+    dnsDomainIs(host, "gamepost.com") ||
+    dnsDomainIs(host, "gamepark.jp") ||
+    dnsDomainIs(host, "kids.nifty.com") ||
+    dnsDomainIs(host, "game-navi.org")
+  ) {
+    return "PROXY 127.0.0.1:0";
+  }
+
   return "DIRECT";
 }
